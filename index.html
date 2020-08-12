@@ -26,33 +26,27 @@
   <main class="page__wrapper">
     <div data-branch-name-generator data-live-validate="true">
       <div class="content__wrapper">
-        <h1 class="wrapper__title">BranchNameGenerator</h1>
+        <h1 class="wrapper__title">Pi Branch Name Generator</h1>
         <!-- form -->
         <form class="grid-container" data-form>
           <div class="grid-x grid-padding-x">
             <!-- Project Type -->
             <div class="cell small-12">
-              <label>Project</label>
-              <fieldset class="radio-switch">
-                <input type="radio" class="custom-radio-control show-for-sr" name="project" value="SJDEV" id="project_sjdev" checked><label for="project_sjdev">SJDEV</label>
-                <input type="radio" class="custom-radio-control show-for-sr" name="project" value="MT" id="project_mt"><label for="project_mt">MT</label>
-              </fieldset>
-            </div>
-            <!-- Ticket Number -->
-            <div class="cell small-6">
-              <label>Ticket Number
-                <input type="number" name="ticket_number" placeholder="1600">
+              <label>Type
+                <select name="type">
+                  <option value="hotfix">Hotfix</option>
+                  <option value="feature">Feature</option>
+                  <option value="problem">Problem</option>
+                  <option value="refactor">Refactor</option>
+                  <option value="document_update">Document Update</option>
+                  <option value="unittest">Unit Test</option>
+                </select>
               </label>
             </div>
-            <!-- Ticket Type -->
-            <div class="cell small-6">
-              <label>Type
-                <select name="ticket_type">
-                  <option value="task">task</option>
-                  <option value="hotfix">hotfix</option>
-                  <option value="bug">bug</option>
-                  <option value="feature">feature</option>
-                </select>
+            <!-- Ticket Number -->
+            <div class="cell small-12">
+              <label>Jira Link
+                <input type="text" name="issue">
               </label>
             </div>
             <!-- Description -->
@@ -66,13 +60,9 @@
         </form>
         <!-- Output Area/Copy to clipboard button -->
         <div class="output__wrapper animated" data-output-area>
-          SJDEV_XXX_task_xxx
+
         </div>
       </div>
-    </div>
-    <!-- Bug Reporting -->
-    <div class="issue-link">
-      <a href="https://github.com/eliotc1986/branch-name-generator/issues" alt="Report an issues" rel="noopener" target="_blank">Report an issue via GitHub</a>
     </div>
   </main>
 

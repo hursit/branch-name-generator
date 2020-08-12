@@ -4,4 +4,4 @@ A simple tool built in es6 for generating JIRA branch names
 
 ### Access
 
-available at https://eliotc1986.github.io/branch-name-generator/
+available at https://hursit.github.io/branch-name-generator/

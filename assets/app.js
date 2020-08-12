@@ -112,24 +112,22 @@ BranchNameGenerator = function () {
       var data = JSON.parse(JSON.stringify(this.$form.serializeArray()));
       var dateToday = moment().format('MMDYYYY');
 
-      var outputString = data.
-      map(
-      function (form) {
-        if (form.name === 'description') {
-          // Thanks to: https://stackoverflow.com/questions/42215005/get-rid-of-blank-strings-in-split
-          var words = form.value.split(' ').filter(function (val) {return val;});
+      var _data = {}
 
-          return words.join('_') || 'xxx';
-        } else if (form.name === 'ticket_type' && form.value === 'hotfix') {
-          return form.value + '_' + dateToday;
-        } else {
-          return form.value || 'XXX';
-        }
-      }).
+      Object.keys(data).forEach(function(key) {
+        var words = data[key].value.split(' ').filter(function (val) {return val;});
+        words = words.join('_');
 
-      join('_');
+        _data[data[key].name] = words || 'x';
+      });
 
-      return outputString;
+      try {
+        _data['issue'] = _data['issue'].split("-").slice(-1).pop();
+      } catch(err) {
+        _data['issue'] = 'X';
+      }
+
+      return `${_data['type']}/${_data['issue']}_${_data['description']}`;
     }
 
     /**
@@ -210,7 +208,7 @@ BranchNameGenerator.defaults = {
   validateOn: 'fieldChange',
   liveValidate: false,
   validateOnBlur: false,
-  defaultOutputText: 'SJDEV_XXX_task_xxx',
+  defaultOutputText: 'branch',
   animationName: 'rubberBand fast' };
 
 
