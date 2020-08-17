@@ -122,7 +122,7 @@ BranchNameGenerator = function () {
       });
 
       try {
-        _data['issue'] = _data['issue'].split("-").slice(-1).pop();
+        _data['issue'] = _data['issue'].split("/").slice(-1).pop();
       } catch(err) {
         _data['issue'] = 'X';
       }
