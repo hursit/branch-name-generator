@@ -127,7 +127,11 @@ BranchNameGenerator = function () {
         _data['issue'] = 'X';
       }
 
-      return `${_data['type']}/${_data['issue']}_${_data['description']}`;
+      if (_data['description'] && _data['description'] != 'x') {
+        return `${_data['type']}/${_data['issue']}_${_data['description']}`;
+      } else {
+        return `${_data['type']}/${_data['issue']}`;
+      }
     }
 
     /**
