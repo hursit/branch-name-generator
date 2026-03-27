@@ -522,9 +522,19 @@ BranchNameGenerator = function () {
 
       var _data = {}
 
+      var turkishToEnglish = function(text) {
+        return text.replace(/[çğıöşüÇĞİÖŞÜ]/g, function(letter) {
+          return {
+            'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
+            'Ç': 'C', 'Ğ': 'G', 'İ': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U'
+          }[letter];
+        });
+      };
+
       Object.keys(data).forEach(function(key) {
         var words = data[key].value.split(' ').filter(function (val) {return val;});
         words = words.join('_');
+        words = turkishToEnglish(words);
 
         _data[data[key].name] = words || 'x';
       });
